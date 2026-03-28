@@ -1,0 +1,14 @@
+# backend/requirements.txt
+
+Django>=6.0.3
+djangorestframework
+django-cors-headers
+gunicorn
+psycopg2-binary
+boto3
+django-storages
+python-dotenv
+
+django-storages[boto3]
+boto3
+Pillow

@@ -1,0 +1,36 @@
+# docker-compose.yml
+
+services:
+  db:
+    image: postgres:16
+    container_name: crud_db
+    environment:
+      POSTGRES_DB: cruddb
+      POSTGRES_USER: cruduser
+      POSTGRES_PASSWORD: crudpassword
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: crud_backend
+    depends_on:
+      - db
+    env_file:
+      - .env
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+    ports:
+      - "8000:8000"
+
+  frontend:
+    build: ./frontend
+    container_name: crud_frontend
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
