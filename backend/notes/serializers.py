@@ -8,3 +8,4 @@ class NoteSerializer(serializers.ModelSerializer):
         model = Note
         fields = ['id', 'title', 'description', 'attachment', 'created_at']
 
+

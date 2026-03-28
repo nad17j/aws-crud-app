@@ -1,4 +1,5 @@
 # docker-compose.yml
+version: "3.9"
 
 services:
   db:
@@ -21,6 +22,10 @@ services:
     environment:
       DB_HOST: db
       DB_PORT: 5432
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_STORAGE_BUCKET_NAME: aws-crud-bucket1
+      AWS_DEFAULT_REGION: ap-southeast-1
     ports:
       - "8000:8000"
 
